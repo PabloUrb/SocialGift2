@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "43282603627",
+    "project_id": "socialgift2-c1e7e",
+    "storage_bucket": "socialgift2-c1e7e.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:43282603627:android:2893fec26741a2a33a5b2e",
+        "android_client_info": {
+          "package_name": "com.example.socialgift2"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "43282603627-fa9f4ull17kkager1uuf2drib4vhh0ef.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyC2xcex4NXWSbbvJwoJBW_1KWhUyjPJ7kA"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "43282603627-fa9f4ull17kkager1uuf2drib4vhh0ef.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
