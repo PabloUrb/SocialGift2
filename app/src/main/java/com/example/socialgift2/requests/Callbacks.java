@@ -6,4 +6,8 @@ public interface Callbacks {
         void onSuccess();
         void onError(String errorMessage);
     }
+    interface DataManagerCallbackLogin {
+        void onSuccess(String token);
+        void onError(String errorMessage);
+    }
 }
