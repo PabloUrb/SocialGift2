@@ -59,9 +59,9 @@ it, there would be the possibility of moving it to another list for a future eve
 
 ## Doc of APIs
 
-- SocialGift API: 
+- SocialGift API:
   - https://balandrau.salle.url.edu/i3/socialgift/api-docs/v1/
-- MercadoExpress: 
+- MercadoExpress:
   - https://balandrau.salle.url.edu/i3/mercadoexpress/api-docs/v1/
-- Repository Images: 
+- Repository Images:
   - https://balandrau.salle.url.edu/i3/repositoryimages
