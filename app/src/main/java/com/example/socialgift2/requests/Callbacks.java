@@ -1,13 +1,19 @@
 package com.example.socialgift2.requests;
 
+import java.util.List;
+
 public interface Callbacks {
 
-    interface DataManagerCallback {
+    interface UserCallback {
         void onSuccess();
         void onError(String errorMessage);
     }
-    interface DataManagerCallbackLogin {
+    interface UserCallbackLogin {
         void onSuccess(String token);
+        void onError(String errorMessage);
+    }
+    interface UserCallbackSearch<User> {
+        void onSuccess(List<User> userList);
         void onError(String errorMessage);
     }
 }

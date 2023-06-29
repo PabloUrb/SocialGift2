@@ -6,7 +6,7 @@ import org.json.JSONObject;
 public class User {
     private  int id;
     private String name;
-    private String last_name;
+    private String lastName;
     private String password;
     private String image;
     private String email;
@@ -16,18 +16,18 @@ public class User {
     public User(int id, String name, String last_name, String password, String image, String email) {
         this.id = id;
         this.name = name;
-        this.last_name = last_name;
+        this.lastName = last_name;
         this.password = password;
         this.image = image;
         this.email = email;
     }
 
-    public User(int id, String name, String last_name, String image, String email) {
-        this.id = id;
+    public User( String name, String last_name, String password, String email, String image) {
         this.name = name;
-        this.last_name = last_name;
-        this.image = image;
+        this.lastName = last_name;
+        this.password = password;
         this.email = email;
+        this.image = image;
     }
 
     public int getId() {
@@ -47,11 +47,11 @@ public class User {
     }
 
     public String getLast_name() {
-        return last_name;
+        return lastName;
     }
 
-    public void setLast_name(String last_name) {
-        this.last_name = last_name;
+    public void setLastName(String last_name) {
+        this.lastName = last_name;
     }
 
     public String getPassword() {
@@ -102,7 +102,7 @@ public class User {
         return "User{" +
                 "id=" + id +
                 ", name='" + name + '\'' +
-                ", last_name='" + last_name + '\'' +
+                ", lastName='" + lastName + '\'' +
                 ", password='" + password + '\'' +
                 ", image='" + image + '\'' +
                 ", email='" + email + '\'' +

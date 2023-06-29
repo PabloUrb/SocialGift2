@@ -14,6 +14,7 @@ import android.widget.SearchView;
 import androidx.fragment.app.Fragment;
 
 import com.example.socialgift2.R;
+import com.example.socialgift2.controllers.UserController;
 import com.example.socialgift2.objects.User;
 
 import java.util.ArrayList;
@@ -24,7 +25,7 @@ public class SearchFragment extends Fragment {
     public static ArrayList<String> arrayList;
     public static ArrayAdapter<String> adapter;
 
-    //private UsersController usersController;
+    private UserController userController;
 
     public static ListView listView;
     public static List<User> lstUsers = new ArrayList<>();
@@ -36,7 +37,7 @@ public class SearchFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        //usersController = new UsersController(this, getActivity());
+        userController = new UserController(this, getActivity());
         View rootView = inflater.inflate(R.layout.fragment_search, container, false);
 
         //ImageView imageView = (ImageView) getView().findViewById(R.id.);
@@ -60,9 +61,8 @@ public class SearchFragment extends Fragment {
                 if(TextUtils.isEmpty(s)){
                     listView.setVisibility(View.GONE);
                 }else{
-
                     System.out.println("s :: " +s);
-                    //usersController.searchUser(s);
+                    userController.searchUserByEmail(s);
 
                 }
                 return false;
