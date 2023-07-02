@@ -24,6 +24,13 @@ public class Wishlist {
         this.description = description;
         this.gifts = gifts;
     }
+    public Wishlist(int id, String name, String description,  int id_user, Date created_at) {
+        this.id = id;
+        this.creation_date = created_at;
+        this.id_user = id_user;
+        this.name = name;
+        this.description = description;
+    }
 
     public int getId() {
         return id;

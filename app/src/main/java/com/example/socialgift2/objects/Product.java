@@ -7,17 +7,21 @@ public class Product {
     private String link;
     private String photo;
     private float price;
+    private int is_active;
+    private int[] categoryIds;
 
     public Product() {
     }
 
-    public Product(int id, String name, String description, String link, String photo, float price) {
+    public Product(int id, String name, String description, String link, String photo, float price, int is_active, int[] categoryIds) {
         this.id = id;
         this.name = name;
         this.description = description;
         this.link = link;
         this.photo = photo;
         this.price = price;
+        this.is_active = is_active;
+        this.categoryIds = categoryIds;
     }
 
     public int getId() {

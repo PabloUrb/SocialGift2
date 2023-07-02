@@ -1,39 +1,29 @@
 package com.example.socialgift2.objects;
 
 public class Session {
-    public static String userEmail;
-    public static String userPass;
-    public static String userToken;
+    public static User user = new User();
+    public static String token;
 
     public Session() {
     }
-    public Session(String userEmail, String userPass, String userToken) {
-        this.userEmail = userEmail;
-        this.userPass = userPass;
-        this.userToken = userToken;
+    public Session(User user, String token) {
+        this.user = user;
+        this.token = token;
     }
 
-    public static String getUserEmail() {
-        return userEmail;
+    public static User getUser() {
+        return user;
     }
 
-    public static void setUserEmail(String userEmail) {
-        Session.userEmail = userEmail;
+    public static void setUser(User user) {
+        Session.user = user;
     }
 
-    public static String getUserPass() {
-        return userPass;
+    public static String getToken() {
+        return token;
     }
 
-    public static void setUserPass(String userPass) {
-        Session.userPass = userPass;
-    }
-
-    public static String getUserToken() {
-        return userToken;
-    }
-
-    public static void setUserToken(String userToken) {
-        Session.userToken = userToken;
+    public static void setToken(String token) {
+        Session.token = token;
     }
 }

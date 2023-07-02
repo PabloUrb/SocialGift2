@@ -2,16 +2,24 @@ package com.example.socialgift2.controllers;
 
 import android.content.Context;
 import android.content.Intent;
+import android.util.Log;
 import android.view.View;
 import android.widget.Toast;
 
 import com.example.socialgift2.MainActivity;
+import com.example.socialgift2.activities.EditMyUserActivity;
+import com.example.socialgift2.activities.ShowGiftActivity;
+import com.example.socialgift2.activities.ShowMyProfileActivity;
+import com.example.socialgift2.activities.ShowUserActivity;
 import com.example.socialgift2.activities.SignInActivity;
 import com.example.socialgift2.activities.SignUpActivity;
 import com.example.socialgift2.fragments.SearchFragment;
+import com.example.socialgift2.fragments.ShowWishlistFragment;
+import com.example.socialgift2.objects.Gift;
 import com.example.socialgift2.objects.User;
-import com.example.socialgift2.requests.Callbacks;
+import com.example.socialgift2.objects.Wishlist;
 import com.example.socialgift2.requests.SocialGiftAPI;
+import com.example.socialgift2.requests.Callbacks;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -20,7 +28,15 @@ public class UserController {
     private SignInActivity signInActivity;
     private SignUpActivity signUpActivity;
     private SearchFragment searchFragment;
+    private ShowUserActivity showUserActivity;
+    private ShowMyProfileActivity showMyProfileActivity;
+    private ShowWishlistFragment showWishlistFragment;
+    private EditMyUserActivity editMyUserActivity;
+
+    private com.example.socialgift2.requests.Callbacks callbacks;
     private Context context;
+
+
 
     public UserController(SignUpActivity signUpActivity, Context context) {
         this.signUpActivity = signUpActivity;
@@ -33,8 +49,22 @@ public class UserController {
     public UserController(SearchFragment searchFragment, Context context) {
         this.searchFragment = searchFragment;
         this.context = context;
+    }public UserController(ShowMyProfileActivity showMyProfileActivity, Context context) {
+        this.showMyProfileActivity = showMyProfileActivity;
+        this.context = context;
     }
-
+    public UserController(ShowUserActivity showUserActivity, Context context) {
+        this.showUserActivity = showUserActivity;
+        this.context = context;
+    }
+    public UserController(ShowWishlistFragment showWishlistFragment, Context context) {
+        this.showWishlistFragment = showWishlistFragment;
+        this.context = context;
+    }
+    public UserController(EditMyUserActivity editMyUserActivity, Context context) {
+        this.editMyUserActivity = editMyUserActivity;
+        this.context = context;
+    }
     public void createUser(User u){
         try{
             SocialGiftAPI.createUser(u,context, new Callbacks.UserCallback(){
@@ -62,9 +92,7 @@ public class UserController {
                 @Override
                 public void onSuccess(String token) {
                     System.out.println("Usuario logueado");
-                    Toast.makeText(context, "Te has logueado", Toast.LENGTH_SHORT).show();
-                    Intent intent = new Intent(context, MainActivity.class);
-                    context.startActivity(intent);
+
                 }
 
                 @Override
@@ -94,6 +122,86 @@ public class UserController {
             @Override
             public void onError(String errorMessage) {
 
+            }
+        });
+    }
+    public void getWishlistsCountOther(int id, Callbacks.CallbacksCount<Integer> callback) {
+        SocialGiftAPI.getWishlistByUser(id,context, new Callbacks.UserCallbackWishlists<Wishlist>() {
+            @Override
+            public void onSuccess(List<Wishlist> wishlists) {
+                int count = wishlists.size();
+                callback.onSuccess(count);
+            }
+
+            @Override
+            public void onError(String errorMessage) {
+                callback.onError(errorMessage);
+            }
+        });
+    }
+    public void getReservedGiftsCountOther(int id, Callbacks.CallbacksCount<Integer> callback) {
+        SocialGiftAPI.getGiftsReserved(id, context, new Callbacks.UserCallbackGift<Gift>() {
+            @Override
+            public void onSuccess(List<Gift> gifts) {
+                int count = gifts.size();
+                callback.onSuccess(count);
+            }
+
+            @Override
+            public void onError(String errorMessage) {
+                callback.onError(errorMessage);
+            }
+        });
+    }
+    public void getFriendsCountOther(int id, Callbacks.CallbacksCount<Integer> callback) {
+        SocialGiftAPI.getUserFriends(id, context, new Callbacks.UserCallbackSearch<User>() {
+            @Override
+            public void onSuccess(List<User> users) {
+                int count = users.size();
+                callback.onSuccess(count);
+            }
+
+            @Override
+            public void onError(String errorMessage) {
+                callback.onError(errorMessage);
+            }
+        });
+    }
+    public void getWishlistByUser(int id) {
+        SocialGiftAPI.getWishlistByUser(id, context, new Callbacks.UserCallbackWishlists<>() {
+            @Override
+            public void onSuccess(List<Wishlist> lstWishlist) {
+                Log.d("API_SUCCESS_SEARCH_USER", "Mi LISTA DE WISHLIST ES:  " + lstWishlist);
+                if(lstWishlist!=null){
+                    ShowWishlistFragment.arrayList.clear();
+                    for (Wishlist w: lstWishlist ) {
+                        System.out.println("w :: "+w.getName());
+                        ShowWishlistFragment.lstWishlist.add(w);
+                        ShowWishlistFragment.arrayList.add(w.getName());
+                    }
+                    ShowWishlistFragment.listView.setVisibility(View.VISIBLE);
+                }
+            }
+
+            @Override
+            public void onError(String errorMessage) {
+                Log.e("API_ERROR_SEARCH_USER", errorMessage);
+            }
+        });
+    }
+    public void updateUser(List<String> lst){
+        SocialGiftAPI.updateUser(lst.get(0), lst.get(1), lst.get(2), context, new Callbacks.UserCallback(){
+            @Override
+            public void onSuccess() {
+                Toast.makeText(context, "Tu usuario se ha updateado", Toast.LENGTH_SHORT).show();
+                Intent intent = new Intent(context, MainActivity.class);
+                intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                context.startActivity(intent);
+            }
+
+            @Override
+            public void onError(String errorMessage) {
+                Toast.makeText(context, "Tu usuario NO se ha updateado", Toast.LENGTH_SHORT).show();
             }
         });
     }

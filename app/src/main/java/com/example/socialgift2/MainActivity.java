@@ -5,7 +5,11 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.os.Bundle;
 
+import com.example.socialgift2.activities.ShowMyProfileActivity;
+import com.example.socialgift2.activities.ShowUserActivity;
+import com.example.socialgift2.activities.WishlistActivity;
 import com.example.socialgift2.fragments.SearchFragment;
+import com.example.socialgift2.objects.Session;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 public class MainActivity extends AppCompatActivity {
@@ -20,7 +24,7 @@ public class MainActivity extends AppCompatActivity {
         bottomNavigationView.getMenu().clear();
         bottomNavigationView.inflateMenu(R.menu.menu);
 
-
+        System.out.println("2 Session.getuserId() :: "+Session.user.getId());
 
         bottomNavigationView.setOnItemSelectedListener(item -> {
             switch (item.getItemId()){
@@ -28,10 +32,10 @@ public class MainActivity extends AppCompatActivity {
                     startActivity(new Intent(this, MainActivity.class));
                     break;
                 case R.id.ic_user:
-                    //startActivity(new Intent(this, ShowMyUserActivity.class));
+                    startActivity(new Intent(this, ShowMyProfileActivity.class));
                     break;
                 case R.id.ic_basket:
-                    //startActivity(new Intent(this, WishlistActivity.class));
+                    startActivity(new Intent(this, WishlistActivity.class));
                     break;
             }
             return false;

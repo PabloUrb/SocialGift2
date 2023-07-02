@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <TextView
+        android:id="@+id/title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Editar usuario"
+        android:textSize="24sp"
+        android:layout_marginTop="75dp"
+        android:layout_centerHorizontal="true"/>
+
+    <EditText
+        android:id="@+id/name"
+        android:layout_width="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:ems="15"
+        android:layout_height="wrap_content"
+        android:hint="Nombre"
+        android:textSize="20dp"
+        android:inputType="textPersonName"
+        android:layout_marginTop="75dp"
+        android:layout_below="@id/title"/>
+
+    <EditText
+        android:id="@+id/lastname"
+        android:layout_width="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="15dp"
+        android:ems="15"
+        android:layout_height="wrap_content"
+        android:hint="Apellido"
+        android:textSize="20dp"
+        android:inputType="textPersonName"
+        android:layout_below="@id/name"/>
+
+    <EditText
+        android:id="@+id/imageurl"
+        android:layout_width="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:ems="15"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="15dp"
+        android:hint="URL imagen"
+        android:inputType="textUri"
+        android:textSize="20dp"
+        android:layout_below="@id/lastname"/>
+
+    <Button
+        android:id="@+id/save"
+        android:layout_width="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:ems="15"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="15dp"
+        android:text="Guardar"
+        android:layout_below="@id/imageurl"/>
+
+</RelativeLayout>

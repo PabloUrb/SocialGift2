@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+
+    <ImageView
+        android:id="@+id/image"
+        android:layout_width="120dp"
+        android:layout_height="120dp"
+        android:src="@drawable/ic_user"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:scaleType="centerCrop"
+        android:layout_marginTop="50dp"
+        tools:src="@tools:sample/avatars" />
+
+    <TextView
+        android:id="@+id/userName"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="24sp"
+        android:textColor="@color/black"
+        android:text="Lore Ipsum Dolor"
+        android:layout_below="@+id/image"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="16dp"/>
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_below="@id/userName"
+        android:layout_centerHorizontal="true">
+
+        <TextView
+            android:id="@+id/friends_count"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Amigos:"
+            android:layout_marginEnd="16dp"/>
+
+        <TextView
+            android:id="@+id/wishlists_count"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Wishlists:"
+            android:layout_marginEnd="16dp"/>
+
+        <TextView
+            android:id="@+id/reserved_gifts_count"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Reservados:"/>
+    </LinearLayout>
+
+    <Button
+        android:id="@+id/edit"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="53dp"
+        android:drawablePadding="8dp"
+        android:layout_below="@id/userName"
+        android:padding="8dp"
+        android:text="Edit"
+        android:textColor="@color/white"
+        android:layout_marginStart="75dp"/>
+
+
+
+    <Button
+        android:id="@+id/logout"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/userName"
+        android:layout_marginStart="75dp"
+        android:layout_marginTop="53dp"
+        android:layout_toEndOf="@id/edit"
+        android:drawableStart="@drawable/ic_logout"
+        android:drawablePadding="8dp"
+        android:padding="8dp"
+        android:text="Logout"
+        android:textColor="@color/white" />
+
+    <Button
+        android:id="@+id/requests"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/edit"
+        android:layout_marginTop="75dp"
+        android:layout_centerHorizontal="true"
+        android:drawablePadding="8dp"
+        android:padding="8dp"
+        android:text="Friend's Requests"
+        android:textColor="@color/white" />
+    <com.google.android.material.bottomnavigation.BottomNavigationView
+        android:id="@+id/bottom_navigationbar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom"
+        app:backgroundTint="@color/purple_500"
+        app:itemIconTint="#ffffff"
+        android:layout_below="@id/requests"
+        android:layout_marginTop="275dp"
+        app:itemTextColor="#ffffff"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.24" />
+</RelativeLayout>

@@ -1,6 +1,7 @@
 package com.example.socialgift2.fragments;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.view.LayoutInflater;
@@ -14,6 +15,7 @@ import android.widget.SearchView;
 import androidx.fragment.app.Fragment;
 
 import com.example.socialgift2.R;
+import com.example.socialgift2.activities.ShowUserActivity;
 import com.example.socialgift2.controllers.UserController;
 import com.example.socialgift2.objects.User;
 
@@ -82,8 +84,8 @@ public class SearchFragment extends Fragment {
                         user=u;
                     }
                 }
-                /*Intent homepage = new Intent(getActivity(), com.example.socialgift.view.ShowUserProfile.class);
-                startActivity(homepage);*/
+                Intent homepage = new Intent(getActivity(), ShowUserActivity.class);
+                startActivity(homepage);
             }
         });
         return rootView;
