@@ -68,7 +68,6 @@ public class ShowMyProfileActivity extends AppCompatActivity {
         edit = (Button) findViewById(R.id.edit);
         logout = (Button) findViewById(R.id.logout);
         requests = (Button) findViewById(R.id.requests);
-        //wishlist = (Button) findViewById(R.id.wishlist);
 
         edit.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
@@ -79,10 +78,12 @@ public class ShowMyProfileActivity extends AppCompatActivity {
 
         logout.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
+                userController.logOut();
             }
         });
         requests.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
+                startActivity(new Intent(getApplicationContext(), RequestsActivity.class));
             }
         });
         bottomNavigationView.setOnItemSelectedListener(item -> {

@@ -12,6 +12,15 @@
         android:id="@+id/fragment_searchBar"
         tools:ignore="MissingConstraints" />
 
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recyclerViewObjects"
+        android:layout_width="match_parent"
+        android:layout_height="594dp"
+        android:layout_marginTop="79dp"
+        android:layout_marginBottom="79dp"
+        tools:layout_editor_absoluteX="355dp"
+        tools:layout_editor_absoluteY="675dp" />
+
     <com.google.android.material.bottomnavigation.BottomNavigationView
         android:id="@+id/bottom_navigationbar"
         android:layout_width="match_parent"

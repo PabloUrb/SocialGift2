@@ -17,6 +17,7 @@ import android.widget.Toast;
 
 import com.example.socialgift2.MainActivity;
 import com.example.socialgift2.R;
+import com.example.socialgift2.controllers.FriendsController;
 import com.example.socialgift2.controllers.UserController;
 import com.example.socialgift2.fragments.SearchFragment;
 import com.example.socialgift2.objects.Session;
@@ -31,7 +32,7 @@ public class ShowUserActivity extends AppCompatActivity {
     private TextView nameTextView, friendsCountTextView, reservedGiftsCountTextView, wishlistsCountTextView;
     User user;
     UserController userController;
-    //FriendsController friendsController;
+    FriendsController friendsController;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -53,7 +54,7 @@ public class ShowUserActivity extends AppCompatActivity {
         reservedGiftsCountTextView = findViewById(R.id.reserved_gifts_count);
         wishlistsCountTextView = findViewById(R.id.wishlists_count);
         userController = new UserController(this, getApplicationContext());
-        //friendsController = new FriendsController(this, getApplicationContext());
+        friendsController = new FriendsController(this, getApplicationContext());
         System.out.println("USER ID :: "+SearchFragment.user.getId());
         showUserData(SearchFragment.user);
 
@@ -71,14 +72,15 @@ public class ShowUserActivity extends AppCompatActivity {
 
         reserved.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
-                /*Intent myIntent = new Intent(getApplicationContext(), ShowReservedActivity.class);
-                startActivity(myIntent);*/
+                Intent myIntent = new Intent(getApplicationContext(), ShowReservedActivity.class);
+                startActivity(myIntent);
             }
         });
 
         requestBeFriends.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
-                //friendsController.sendFriendRequest(SearchFragment.user.getId());
+                System.out.println("SearchFragment.user.getId() :: "+SearchFragment.user.getId());
+                friendsController.sendFriendRequest(SearchFragment.user.getId());
             }
         });
     }

@@ -1,7 +1,5 @@
 package com.example.socialgift2.requests;
 
-import com.example.socialgift2.objects.Gift;
-
 import java.util.List;
 
 public interface Callbacks {
@@ -33,6 +31,16 @@ public interface Callbacks {
     }
     interface UserCallbackProduct<Product> {
         void onSuccess(Product product);
+
+        void onError(String errorMessage);
+    }
+    interface UserCallbackProductList<Product> {
+        List<com.example.socialgift2.objects.Product> onSuccess(List<Product> products);
+
+        void onError(String errorMessage);
+    }
+    interface UserCallbackUsersList<User> {
+        void onSuccess(List<User> userList);
         void onError(String errorMessage);
     }
 }

@@ -25,6 +25,7 @@ public class ShowWishlistFragment extends Fragment {
     public static ArrayAdapter<String> adapter;
     private UserController userController;
     public static ListView listView;
+    public static Wishlist wishlistfinal;
     public static ArrayList<String> arrayList;
     public static List<Wishlist> lstWishlist = new ArrayList<>();
     public static Wishlist wishlist;
@@ -73,6 +74,9 @@ public class ShowWishlistFragment extends Fragment {
                 if(wishlist.getGifts()==null){
                     Toast.makeText(getActivity().getApplicationContext(), "No tiene regalos relacionados",Toast.LENGTH_SHORT).show();
                 }else{
+                    System.out.println("*******************************************************");
+                    System.out.println("ShowWishlistFragment");
+                    wishlistfinal = lstWishlist.get(position);
                     ShowGiftFragment.lstGifts = wishlist.getGifts();
                     startActivity( new Intent(getActivity().getApplicationContext(), ShowGiftActivity.class));
                 }

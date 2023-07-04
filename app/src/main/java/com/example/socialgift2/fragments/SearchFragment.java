@@ -14,6 +14,7 @@ import android.widget.SearchView;
 
 import androidx.fragment.app.Fragment;
 
+import com.example.socialgift2.MainActivity;
 import com.example.socialgift2.R;
 import com.example.socialgift2.activities.ShowUserActivity;
 import com.example.socialgift2.controllers.UserController;
@@ -35,16 +36,19 @@ public class SearchFragment extends Fragment {
 
     SearchView searchView;
     Activity activity = getActivity();
+    ObjectsFragment objectsFragment;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         userController = new UserController(this, getActivity());
+
         View rootView = inflater.inflate(R.layout.fragment_search, container, false);
 
         //ImageView imageView = (ImageView) getView().findViewById(R.id.);
         searchView = (SearchView) rootView.findViewById(R.id.sv_fragmentSearch);
         listView = (ListView) rootView.findViewById(R.id.lv_fragmentSearch);
+
 
         listView.setVisibility(View.GONE);
 
@@ -62,7 +66,9 @@ public class SearchFragment extends Fragment {
             public boolean onQueryTextChange(String s) {
                 if(TextUtils.isEmpty(s)){
                     listView.setVisibility(View.GONE);
+                    MainActivity.recyclerView.setVisibility(View.VISIBLE);
                 }else{
+                    MainActivity.recyclerView.setVisibility(View.GONE);
                     System.out.println("s :: " +s);
                     userController.searchUserByEmail(s);
 

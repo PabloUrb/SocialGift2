@@ -8,6 +8,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
+import android.widget.Toast;
 
 import androidx.fragment.app.Fragment;
 
@@ -15,6 +16,7 @@ import com.example.socialgift2.R;
 import com.example.socialgift2.controllers.MercadoExpressController;
 import com.example.socialgift2.objects.Gift;
 
+import java.sql.SQLOutput;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -22,6 +24,7 @@ public class ShowGiftFragment extends Fragment {
     private MercadoExpressController mercadoExpressController;
     public static ListView listView;
     public static List<Gift> lstGifts = new ArrayList<>();
+
     public static ArrayList<String> arrayList = new ArrayList<>();
 
     public static List<String> productsId;
@@ -31,19 +34,24 @@ public class ShowGiftFragment extends Fragment {
         super.onCreate(savedInstanceState);
         mercadoExpressController = new MercadoExpressController(this, getActivity());
         View rootView = inflater.inflate(R.layout.fragment_show_gift, container, false);
+        try{
+            System.out.println("lstGifts.size() :: "+lstGifts.size());
+            if(lstGifts.size() > 0){
+                arrayList.clear();
 
-        System.out.println("lstGifts.size() :: "+lstGifts.size());
-        if(lstGifts.size() > 0){
-            arrayList.clear();
-
-            for (Gift g: lstGifts) {
-                System.out.println("producto");
-                String[] result = g.getProduct_url().split("/");
-                System.out.println("product id :: "+result[result.length-1]);
-                mercadoExpressController.getAProduct(Integer.parseInt(result[result.length-1]),0);
-                //arrayList.add(g.getProductUrl());
+                for (Gift g: lstGifts) {
+                    System.out.println("producto");
+                    String[] result = g.getProduct_url().split("/");
+                    System.out.println("product id :: "+result[result.length-1]);
+                    mercadoExpressController.getAProduct(Integer.parseInt(result[result.length-1]),0);
+                    //arrayList.add(g.getProductUrl());
+                }
             }
+        }catch (Exception e){
+            System.out.println("No se pueden mostrar los Regalos porque no hay ninguna relacion entre regalos y productos");
+            Toast.makeText(this.getContext(), "No se pueden mostrar los Regalos porque no hay ninguna relacion entre regalos y productos", Toast.LENGTH_SHORT).show();
         }
+
         //ImageView imageView = (ImageView) getView().findViewById(R.id.);
         listView = (ListView) rootView.findViewById(R.id.lv_fragmentGift);
 
