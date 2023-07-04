@@ -225,15 +225,11 @@ public class UserController {
 
             @Override
             public void onSuccess(List<Gift> gift) {
-                System.out.println("MI ID QUE LE ESTOY PASANDO AL RESERVADO ES :: "+id);
-                Log.d("API_SUCCESS_SEARCH_USER", "Mi LISTA DE WISHLIST ES:  " + gift);
                 System.out.println("lista reseved gifts:: "+gift);
                 if(gift!=null){
                     ShowReservedFragment.arrayList.clear();
                     for (Gift w: gift ) {
-                        //ShowReservedFragment.lstGift.add(w);
                         String[] result = w.getProduct_url().split("/");
-                        //ShowReservedFragment.arrayList.add(result[result.length-1]);
                         System.out.println("w.getProductUrl() :: "+w.getProduct_url());
                         System.out.println("result[result.length-1]  :: "+result[result.length-1]);
                         try{
