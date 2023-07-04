@@ -8,6 +8,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
+import android.graphics.drawable.Drawable;
 import android.os.AsyncTask;
 import android.os.Environment;
 import android.util.Log;
@@ -24,6 +25,7 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
+import com.bumptech.glide.RequestBuilder;
 import com.example.socialgift2.MainActivity;
 import com.example.socialgift2.R;
 import com.example.socialgift2.activities.AddProductToWishlistActivity;
@@ -110,9 +112,9 @@ public class ObjectsFragment extends RecyclerView.Adapter<ObjectsFragment.Produc
 
             try {
                 Glide.with(context)
+                        .asBitmap()
                         .load(product.getPhoto())
                         .error(R.drawable.ic_image)
-                        .circleCrop()
                         .into(imageProduct);
             }catch (Exception e){
                 imageProduct.setImageResource(R.drawable.ic_image);

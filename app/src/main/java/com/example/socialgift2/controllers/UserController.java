@@ -14,8 +14,10 @@ import com.example.socialgift2.activities.ShowUserActivity;
 import com.example.socialgift2.activities.SignInActivity;
 import com.example.socialgift2.activities.SignUpActivity;
 import com.example.socialgift2.fragments.SearchFragment;
+import com.example.socialgift2.fragments.ShowReservedFragment;
 import com.example.socialgift2.fragments.ShowWishlistFragment;
 import com.example.socialgift2.objects.Gift;
+import com.example.socialgift2.objects.Session;
 import com.example.socialgift2.objects.User;
 import com.example.socialgift2.objects.Wishlist;
 import com.example.socialgift2.requests.SocialGiftAPI;
@@ -32,6 +34,7 @@ public class UserController {
     private ShowMyProfileActivity showMyProfileActivity;
     private ShowWishlistFragment showWishlistFragment;
     private EditMyUserActivity editMyUserActivity;
+    private ShowReservedFragment showReservedFragment;
 
     private com.example.socialgift2.requests.Callbacks callbacks;
     private Context context;
@@ -63,6 +66,10 @@ public class UserController {
     }
     public UserController(EditMyUserActivity editMyUserActivity, Context context) {
         this.editMyUserActivity = editMyUserActivity;
+        this.context = context;
+    }
+    public UserController(ShowReservedFragment showReservedFragment, Context context) {
+        this.showReservedFragment = showReservedFragment;
         this.context = context;
     }
     public void createUser(User u){
@@ -98,6 +105,7 @@ public class UserController {
                 @Override
                 public void onError(String errorMessage) {
                     System.out.println("Usuario NO logueado");
+                    System.out.println(errorMessage);
                     Toast.makeText(context, "Algo ha salido mal, vuelve a intentarlo", Toast.LENGTH_SHORT).show();
                 }
             });
@@ -125,7 +133,7 @@ public class UserController {
             }
         });
     }
-    public void getWishlistsCountOther(int id, Callbacks.CallbacksCount<Integer> callback) {
+    public void getWCountOther(int id, Callbacks.CallbacksCount<Integer> callback) {
         SocialGiftAPI.getWishlistByUser(id,context, new Callbacks.UserCallbackWishlists<Wishlist>() {
             @Override
             public void onSuccess(List<Wishlist> wishlists) {
@@ -139,7 +147,7 @@ public class UserController {
             }
         });
     }
-    public void getReservedGiftsCountOther(int id, Callbacks.CallbacksCount<Integer> callback) {
+    public void getReservedCountOther(int id, Callbacks.CallbacksCount<Integer> callback) {
         SocialGiftAPI.getGiftsReserved(id, context, new Callbacks.UserCallbackGift<Gift>() {
             @Override
             public void onSuccess(List<Gift> gifts) {
@@ -153,8 +161,8 @@ public class UserController {
             }
         });
     }
-    public void getFriendsCountOther(int id, Callbacks.CallbacksCount<Integer> callback) {
-        SocialGiftAPI.getUserFriends(id, context, new Callbacks.UserCallbackSearch<User>() {
+    public void getFCountOther(int id, Callbacks.CallbacksCount<Integer> callback) {
+        SocialGiftAPI.getUserFriends(id, context, new Callbacks.UserCallbackUsersList<User>() {
             @Override
             public void onSuccess(List<User> users) {
                 int count = users.size();
@@ -202,6 +210,54 @@ public class UserController {
             @Override
             public void onError(String errorMessage) {
                 Toast.makeText(context, "Tu usuario NO se ha updateado", Toast.LENGTH_SHORT).show();
+            }
+        });
+    }
+    public void logOut(){
+        Session.user = null;
+        Session.setToken("");
+        Intent intent = new Intent(context, SignInActivity.class);
+        intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+        context.startActivity(intent);
+    }
+    public void getGiftsReserved(int id){
+        SocialGiftAPI.getGiftsReserved(id, context, new Callbacks.UserCallbackGift<>() {
+
+            @Override
+            public void onSuccess(List<Gift> gift) {
+                System.out.println("MI ID QUE LE ESTOY PASANDO AL RESERVADO ES :: "+id);
+                Log.d("API_SUCCESS_SEARCH_USER", "Mi LISTA DE WISHLIST ES:  " + gift);
+                System.out.println("lista reseved gifts:: "+gift);
+                if(gift!=null){
+                    ShowReservedFragment.arrayList.clear();
+                    for (Gift w: gift ) {
+                        //ShowReservedFragment.lstGift.add(w);
+                        String[] result = w.getProduct_url().split("/");
+                        //ShowReservedFragment.arrayList.add(result[result.length-1]);
+                        System.out.println("w.getProductUrl() :: "+w.getProduct_url());
+                        System.out.println("result[result.length-1]  :: "+result[result.length-1]);
+                        try{
+                            Integer idGift = Integer.valueOf(result[result.length-1]);
+                            if(idGift!=null){
+
+                                ShowReservedFragment.mercadoExpressController.getAProduct(idGift,1);
+                            }
+
+                        }catch (Exception e){
+                            Toast.makeText(context, "No tiene regalos reservados",Toast.LENGTH_SHORT).show();
+                        }
+
+                    }
+                    ShowReservedFragment.listView.setVisibility(View.VISIBLE);;
+                    //ShowGiftFragment.productsId = ShowReservedFragment.lstGift;
+                }else{
+                    Toast.makeText(context, "No tiene regalos reservados",Toast.LENGTH_SHORT).show();
+                }
+            }
+
+            @Override
+            public void onError(String errorMessage) {
+                Log.e("API_ERROR_SEARCH_USER", errorMessage);
             }
         });
     }

@@ -118,7 +118,7 @@ public class ShowUserActivity extends AppCompatActivity {
     }
     public void showUserData(User user) {
         // Mostrar los datos del usuario en la interfaz de usuario
-        userController.getWishlistsCountOther(user.getId(), new Callbacks.CallbacksCount<Integer>() {
+        userController.getWCountOther(user.getId(), new Callbacks.CallbacksCount<Integer>() {
             @Override
             public void onSuccess(Integer count) {
                 if(count!=null){
@@ -136,7 +136,7 @@ public class ShowUserActivity extends AppCompatActivity {
             }
         });
 
-        userController.getReservedGiftsCountOther(user.getId(), new Callbacks.CallbacksCount<Integer>() {
+        userController.getReservedCountOther(user.getId(), new Callbacks.CallbacksCount<Integer>() {
             @Override
             public void onSuccess(Integer count) {
                 reservedGiftsCountTextView.setText("Regalos reservados: " + count);
@@ -150,7 +150,7 @@ public class ShowUserActivity extends AppCompatActivity {
             }
         });
 
-        userController.getFriendsCountOther(user.getId(),new Callbacks.CallbacksCount<Integer>() {
+        userController.getFCountOther(user.getId(),new Callbacks.CallbacksCount<Integer>() {
             @Override
             public void onSuccess(Integer count) {
                 TextView friendsCountTextView = findViewById(R.id.friends_count);
