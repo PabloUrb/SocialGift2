@@ -43,7 +43,7 @@ public class WishlistController {
         this.context = context;
     }
     public void cargarWishlist() {
-        SocialGiftAPI.wishlistsMyUser(context, new Callbacks.UserCallbackWishlists<Wishlist>() {
+        SocialGiftAPI.myWishlists(context, new Callbacks.UserCallbackWishlists<Wishlist>() {
             @Override
             public void onSuccess(List<Wishlist> wishlists) {
                 System.out.println("wishlists.size() :: "+wishlists.size());
@@ -57,7 +57,7 @@ public class WishlistController {
         });
     }
     public void cargarWishlist2() {
-        SocialGiftAPI.wishlistsMyUser(context, new Callbacks.UserCallbackWishlists<Wishlist>() {
+        SocialGiftAPI.myWishlists(context, new Callbacks.UserCallbackWishlists<Wishlist>() {
             @Override
             public void onSuccess(List<Wishlist> wishlists) {
                 System.out.println("wishlists.size() :: "+wishlists.size());

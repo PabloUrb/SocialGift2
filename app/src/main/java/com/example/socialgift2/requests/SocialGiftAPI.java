@@ -337,7 +337,7 @@ public class SocialGiftAPI implements Callbacks {
         };
         requestQueue.add(request);
 
-    }public static void wishlistsMyUser(Context context, UserCallbackWishlists<Wishlist> callback){
+    }public static void myWishlists(Context context, UserCallbackWishlists<Wishlist> callback){
         String finalUrl = baseUrl + "/users/" + Session.user.getId() + "/wishlists";
         RequestQueue requestQueue = Volley.newRequestQueue(context);
         JsonArrayRequest request = new JsonArrayRequest(Request.Method.GET, finalUrl, null,
@@ -588,7 +588,7 @@ public class SocialGiftAPI implements Callbacks {
     }
 
 
-    public static void getFriendRequests(Context context, UserCallbackUsersList<User> callback) {
+    public static void getFRequests(Context context, UserCallbackUsersList<User> callback) {
         RequestQueue requestQueue = Volley.newRequestQueue(context);
         String finalUrl = baseUrl + "/friends/requests";
 
@@ -635,7 +635,7 @@ public class SocialGiftAPI implements Callbacks {
         requestQueue.add(request);
     }
 
-    public static void sendFriendRequest(int userId, Context context, UserCallback callback) {
+    public static void sendFRequest(int userId, Context context, UserCallback callback) {
         RequestQueue requestQueue = Volley.newRequestQueue(context);
         String finalUrl = baseUrl + "/friends/" + userId;
         System.out.println("userId 2 :: "+userId);
@@ -663,7 +663,7 @@ public class SocialGiftAPI implements Callbacks {
 
         requestQueue.add(request);
     }
-    public static void acceptFriendRequest(int requestId, Context context, UserCallback callback) {
+    public static void acceptFRequest(int requestId, Context context, UserCallback callback) {
         RequestQueue requestQueue = Volley.newRequestQueue(context);
         String finalUrl = baseUrl + "/friends/" + requestId;
         JsonObjectRequest request = new JsonObjectRequest(Request.Method.PUT, finalUrl, null,
@@ -689,7 +689,7 @@ public class SocialGiftAPI implements Callbacks {
 
         requestQueue.add(request);
     }
-    public static void rejectFriendRequest(int requestId, Context context, UserCallback callback) {
+    public static void rejectFRequest(int requestId, Context context, UserCallback callback) {
         RequestQueue requestQueue = Volley.newRequestQueue(context);
         String finalUrl = baseUrl + "/friends/" + requestId;
 

@@ -35,7 +35,7 @@ public class FriendsController {
     }
 
     public void getFriendRequests(){
-        SocialGiftAPI.getFriendRequests(context, new Callbacks.UserCallbackUsersList<User>(){
+        SocialGiftAPI.getFRequests(context, new Callbacks.UserCallbackUsersList<User>(){
             @Override
             public void onSuccess(List<User> users) {
                 if(users!=null){
@@ -60,7 +60,7 @@ public class FriendsController {
 
     public void sendFriendRequest(int userId){
         System.out.println("userId 1 :: "+userId);
-        SocialGiftAPI.sendFriendRequest(userId, context, new Callbacks.UserCallback() {
+        SocialGiftAPI.sendFRequest(userId, context, new Callbacks.UserCallback() {
             @Override
             public void onSuccess() {
                 Toast.makeText(context, "Se ha enviado tu solicitud de amistad",Toast.LENGTH_SHORT).show();
@@ -74,7 +74,7 @@ public class FriendsController {
     }
     public void acceptFriendRequest(int requestId, String position){
 
-        SocialGiftAPI.acceptFriendRequest(requestId, context, new Callbacks.UserCallback() {
+        SocialGiftAPI.acceptFRequest(requestId, context, new Callbacks.UserCallback() {
             @Override
             public void onSuccess() {
                 Toast.makeText(context, "Se ha aceptado la solicitud de amistad",Toast.LENGTH_SHORT).show();
@@ -90,7 +90,7 @@ public class FriendsController {
     }
 
     public void rejectFriendRequest(int requestId, String position){
-        SocialGiftAPI.rejectFriendRequest(requestId, context, new Callbacks.UserCallback() {
+        SocialGiftAPI.rejectFRequest(requestId, context, new Callbacks.UserCallback() {
             @Override
             public void onSuccess() {
                 Toast.makeText(context, "Se ha rechazado la solicitud de amistad",Toast.LENGTH_SHORT).show();
