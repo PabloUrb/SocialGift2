@@ -41,7 +41,7 @@ public class GiftController {
 
             @Override
             public void onError(String errorMessage) {
-                Log.e("No hay wishlists", errorMessage);
+                System.out.printf(errorMessage);
             }
         });
     }
@@ -59,7 +59,6 @@ public class GiftController {
             @Override
             public void onError(String errorMessage) {
                 System.out.println("Error :: "+errorMessage);
-                Log.e("No hay wishlists", errorMessage);
             }
         });
     }

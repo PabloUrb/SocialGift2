@@ -16,6 +16,7 @@ import androidx.fragment.app.Fragment;
 import com.example.socialgift2.R;
 import com.example.socialgift2.activities.ShowGiftActivity;
 import com.example.socialgift2.controllers.UserController;
+import com.example.socialgift2.objects.Gift;
 import com.example.socialgift2.objects.Wishlist;
 
 import java.util.ArrayList;
@@ -27,6 +28,7 @@ public class ShowWishlistFragment extends Fragment {
     public static ListView listView;
     public static Wishlist wishlistfinal;
     public static ArrayList<String> arrayList;
+    private static List<Gift> tempsLstGift = new ArrayList<>();
     public static List<Wishlist> lstWishlist = new ArrayList<>();
     public static Wishlist wishlist;
 
@@ -37,6 +39,7 @@ public class ShowWishlistFragment extends Fragment {
         super.onCreate(savedInstanceState);
         userController = new UserController(this, getActivity());
         View rootView = inflater.inflate(R.layout.fragment_show_wishlist, container, false);
+        lstWishlist.clear();
         userController.getWishlistByUser(SearchFragment.user.getId());
         //ImageView imageView = (ImageView) getView().findViewById(R.id.SearchFragment.user);
         listView = (ListView) rootView.findViewById(R.id.lv_fragmentWishlist);
@@ -71,6 +74,8 @@ public class ShowWishlistFragment extends Fragment {
                 System.out.println("wishlist getCreationDate :: "+wishlist.getCreation_date());
                 System.out.println("wishlist getGifts :: "+wishlist.getGifts());
                 System.out.println("wishlist getEnd_date :: "+wishlist.getEnd_date());
+
+                tempsLstGift = wishlist.getGifts();
                 if(wishlist.getGifts()==null){
                     Toast.makeText(getActivity().getApplicationContext(), "No tiene regalos relacionados",Toast.LENGTH_SHORT).show();
                 }else{
@@ -78,6 +83,9 @@ public class ShowWishlistFragment extends Fragment {
                     System.out.println("ShowWishlistFragment");
                     wishlistfinal = lstWishlist.get(position);
                     ShowGiftFragment.lstGifts = wishlist.getGifts();
+                    System.out.println("wishlist.getGifts() :: "+wishlist.getGifts());
+                    System.out.println("tempsLstGift :: "+tempsLstGift);
+                    System.out.println("ShowGiftFragment.lstGifts :: "+ShowGiftFragment.lstGifts);
                     startActivity( new Intent(getActivity().getApplicationContext(), ShowGiftActivity.class));
                 }
             }

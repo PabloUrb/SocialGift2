@@ -49,6 +49,7 @@ public class MercadoExpressController {
                 if (product != null) {
                     if (flag == 0) {
                         ShowGiftFragment.arrayList.add(product.getName());
+                        ShowGiftFragment.productsId.add(String.valueOf(product.getId()));
                         ShowGiftFragment.listView.requestLayout();
                         ShowGiftFragment.listView.setVisibility(View.VISIBLE);
                     } else if (flag == 1) {

@@ -14,6 +14,7 @@ import com.example.socialgift2.activities.ShowUserActivity;
 import com.example.socialgift2.activities.SignInActivity;
 import com.example.socialgift2.activities.SignUpActivity;
 import com.example.socialgift2.fragments.SearchFragment;
+import com.example.socialgift2.fragments.ShowGiftFragment;
 import com.example.socialgift2.fragments.ShowReservedFragment;
 import com.example.socialgift2.fragments.ShowWishlistFragment;
 import com.example.socialgift2.objects.Gift;
@@ -228,6 +229,7 @@ public class UserController {
                 System.out.println("lista reseved gifts:: "+gift);
                 if(gift!=null){
                     ShowReservedFragment.arrayList.clear();
+                    ShowGiftFragment.productsId.clear();
                     for (Gift w: gift ) {
                         String[] result = w.getProduct_url().split("/");
                         System.out.println("w.getProductUrl() :: "+w.getProduct_url());

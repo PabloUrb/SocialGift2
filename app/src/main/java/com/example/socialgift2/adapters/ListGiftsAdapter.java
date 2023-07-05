@@ -74,8 +74,9 @@ public class ListGiftsAdapter extends BaseAdapter implements ListAdapter {
         System.out.println("=======================================================================");
         System.out.println("list.get(position) :: "+list.get(position) );
         System.out.println("position :: "+position );
-        //System.out.println("ShowGiftFragment.productsId.get(position) :: "+ShowGiftFragment.productsId.get(position) );
-        System.out.println("ShowGiftFragment.lstGifts.get(position) :: "+ShowGiftFragment.lstGifts.get(position) );
+        System.out.println("1 ShowGiftFragment.productsId.get(position) :: "+ShowGiftFragment.productsId.get(position) );
+        System.out.println("2 ShowGiftFragment.lstGifts.get(position).getId() :: "+ShowGiftFragment.lstGifts.get(position).getId());
+        System.out.println("3 ShowGiftFragment.lstGifts.get(position) :: "+ShowGiftFragment.lstGifts.get(position) );
         System.out.println("ShowWishlistFragment.wishlistfinal :: "+ShowWishlistFragment.wishlistfinal);
         String[] result = ShowGiftFragment.lstGifts.get(position).getProduct_url().split("/");
         System.out.println("result[result.length-1] :: "+result[result.length-1] );
@@ -95,8 +96,7 @@ public class ListGiftsAdapter extends BaseAdapter implements ListAdapter {
                     callbtn.setVisibility(View.GONE);
                 }
             }*/
-        if((ShowGiftFragment.productsId.get(position).equals(ShowGiftFragment.lstGifts.get(position).getId()) &&
-                ShowGiftFragment.lstGifts.get(position).getBooked()==1 ) ||
+        if((ShowGiftFragment.lstGifts.get(position).getBooked()==1 ) ||
                 ShowWishlistFragment.wishlistfinal.getId_user() == Session.user.getId()){
 
                     System.out.println("GONE");

@@ -13,6 +13,7 @@ import android.widget.Toast;
 import androidx.fragment.app.Fragment;
 
 import com.example.socialgift2.R;
+import com.example.socialgift2.adapters.ListGiftsAdapter;
 import com.example.socialgift2.controllers.MercadoExpressController;
 import com.example.socialgift2.objects.Gift;
 
@@ -24,10 +25,12 @@ public class ShowGiftFragment extends Fragment {
     private MercadoExpressController mercadoExpressController;
     public static ListView listView;
     public static List<Gift> lstGifts = new ArrayList<>();
+    public static ListGiftsAdapter listGiftsAdapter;
 
     public static ArrayList<String> arrayList = new ArrayList<>();
+    public static List<Gift> tempGift = new ArrayList<>();
 
-    public static List<String> productsId;
+    public static List<String> productsId = new ArrayList<>();
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -36,9 +39,9 @@ public class ShowGiftFragment extends Fragment {
         View rootView = inflater.inflate(R.layout.fragment_show_gift, container, false);
         try{
             System.out.println("lstGifts.size() :: "+lstGifts.size());
-            if(lstGifts.size() > 0){
-                arrayList.clear();
+            if(lstGifts.size() > 0 ){
 
+                arrayList.clear();
                 for (Gift g: lstGifts) {
                     System.out.println("producto");
                     String[] result = g.getProduct_url().split("/");
@@ -46,6 +49,7 @@ public class ShowGiftFragment extends Fragment {
                     mercadoExpressController.getAProduct(Integer.parseInt(result[result.length-1]),0);
                     //arrayList.add(g.getProductUrl());
                 }
+                //listGiftsAdapter(arrayList, getContext());
             }
         }catch (Exception e){
             System.out.println("No se pueden mostrar los Regalos porque no hay ninguna relacion entre regalos y productos");
@@ -59,8 +63,10 @@ public class ShowGiftFragment extends Fragment {
 
         //arrayList = new ArrayList<>();
 
-        adapter = new ArrayAdapter<>(rootView.getContext(), android.R.layout.simple_list_item_1, arrayList);
-        listView.setAdapter(adapter);
+        //adapter = new ArrayAdapter<>(rootView.getContext(), android.R.layout.simple_list_item_1, arrayList);
+
+        System.out.println("arrayList :: "+arrayList.size());
+        listView.setAdapter(new ListGiftsAdapter(arrayList, getContext()));
         listView.requestLayout();
 
         return rootView;
