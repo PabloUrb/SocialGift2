@@ -24,38 +24,32 @@ it, there would be the possibility of moving it to another list for a future eve
 
 ### User Management
 
-- [ ] User register
-- [ ] Login
-- [ ] Logout
-- [ ] View profile
-- [ ] Edit profile
+- [x] User register
+- [x] Login
+- [x] Logout
+- [x] View profile
+- [x] Edit profile
 
 ### Interac.on with users (social)
 
-- [ ] Search for user by email
-- [ ] View user profile
-- [ ] Send Friend Request (Optional)
-- [ ] Accept or Reject Friend Request (Optional)
-- [ ] Get all wishlists of user
-- [ ] Get all gifts reserverd by user
+- [x] Search for user by email
+- [x] View user profile
+- [x] Send Friend Request (Optional)
+- [x] Accept or Reject Friend Request (Optional)
+- [x] Get all wishlists of user
+- [x] Get all gifts reserverd by user
 
 ### Gift
 
-- [ ] Create gift list
-- [ ] Edit gift list
+- [x] Create gift list
+- [x] Edit gift list
 - [ ] Delete gift list
-- [ ] Create gifts
+- [x] Create gifts
 - [ ] Edit gifts
 - [ ] Delete gifts
-- [ ] View gifts
-- [ ] View user who reserved gift
+- [x] View gifts
+- [x] View user who reserved gift
 
-### Messaging with Users (Optional)
-
-- [ ] Send Message
-- [ ] View Exchanged Messages
-- [ ] View Users with whom they have Communicated
-- [ ] Receive Messages
 
 ## Doc of APIs
 

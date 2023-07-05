@@ -169,7 +169,7 @@ public class ShowMyProfileActivity extends AppCompatActivity {
         userController.getFCountOther(id,new Callbacks.CallbacksCount<Integer>() {
             @Override
             public void onSuccess(Integer count) {
-                TextView friendsCountTextView = findViewById(R.id.friends_count);
+                TextView friendsCountTextView = findViewById(R.id.friendsCount);
                 if(count!=null){
                     friendsCountTextView.setText("Amigos: " + count);
                 }else{
