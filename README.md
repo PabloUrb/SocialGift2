@@ -50,9 +50,10 @@ it, there would be the possibility of moving it to another list for a future eve
 - [x] View gifts
 - [x] View user who reserved gift
 
+## Repositorio:
+- https://github.com/PabloUrb/SocialGift2
 
 ## Doc of APIs
-
 - SocialGift API:
   - https://balandrau.salle.url.edu/i3/socialgift/api-docs/v1/
 - MercadoExpress:
