@@ -54,13 +54,11 @@ public class ShowMyProfileActivity extends AppCompatActivity {
         TextView myAwesomeTextView2 = (TextView)findViewById(R.id.userName);
 
         new ShowMyProfileActivity.DownloadImageFromInternet((ImageView) findViewById(R.id.image)).execute(Session.user.getImage());
-        //myAwesomeTextView.setText(SearchFragment.user.getId());
         myAwesomeTextView2.setText(Session.user.getName() +" "+Session.user.getLast_name());
-        friendsCountTextView = findViewById(R.id.friends_count);
-        reservedGiftsCountTextView = findViewById(R.id.reserved_gifts_count);
-        wishlistsCountTextView = findViewById(R.id.wishlists_count);
+        friendsCountTextView = findViewById(R.id.friendsCount);
+        reservedGiftsCountTextView = findViewById(R.id.reservedCount);
+        wishlistsCountTextView = findViewById(R.id.wishlistsCount);
         userController = new UserController(this, getApplicationContext());
-        //friendsController = new FriendsController(this, getApplicationContext());
 
         showUserData(Session.user.getId());
 

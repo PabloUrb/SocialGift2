@@ -36,21 +36,21 @@
         android:layout_centerHorizontal="true">
 
         <TextView
-            android:id="@+id/friends_count"
+            android:id="@+id/friendsCount"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Amigos:"
             android:layout_marginEnd="16dp"/>
 
         <TextView
-            android:id="@+id/wishlists_count"
+            android:id="@+id/wishlistsCount"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Wishlists:"
             android:layout_marginEnd="16dp"/>
 
         <TextView
-            android:id="@+id/reserved_gifts_count"
+            android:id="@+id/reservedCount"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Reservados:"/>
